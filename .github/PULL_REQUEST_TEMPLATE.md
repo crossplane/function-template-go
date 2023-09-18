@@ -25,7 +25,6 @@ I have:
 
 - [ ] Read and followed Crossplane's [contribution process].
 - [ ] Added or updated unit tests for my change.
-- [ ] Run `make reviewable` to ensure this PR is ready for review.
 
 [contribution process]: https://git.io/fj2m9
 [docs]: https://docs.crossplane.io/contribute/contribute
