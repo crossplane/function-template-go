@@ -17,6 +17,8 @@ github.com/crossplane/function-sdk-go v0.0.0-20230920225543-a4ada4f934f6 h1:+LuW
 github.com/crossplane/function-sdk-go v0.0.0-20230920225543-a4ada4f934f6/go.mod h1:0eYY1peg7OeL9qAmrrbWOGO2wlT821Bk+qMJy8CfbVk=
 github.com/crossplane/function-sdk-go v0.0.0-20230922103031-f53ddfff2511 h1:Y6OgwLWGasfLxjZB8dLP+yrRP9tzzTJJ/LGxN8yfNts=
 github.com/crossplane/function-sdk-go v0.0.0-20230922103031-f53ddfff2511/go.mod h1:TUJqH6JCIUWXiX+Nd2XVyy/YagubGzfoH20vU5Ca8ZM=
+github.com/crossplane/function-sdk-go v0.0.0-20230922233856-2dfdc0a08f43 h1:F+WRwapQVIIguvzh+hkZYuGwjDlpMPQ7dvNuict4mVE=
+github.com/crossplane/function-sdk-go v0.0.0-20230922233856-2dfdc0a08f43/go.mod h1:TUJqH6JCIUWXiX+Nd2XVyy/YagubGzfoH20vU5Ca8ZM=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
