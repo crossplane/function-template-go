@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/alecthomas/kong v0.8.0
 	github.com/crossplane/crossplane-runtime v1.13.0
-	github.com/crossplane/function-sdk-go v0.0.0-20230922103031-f53ddfff2511
+	github.com/crossplane/function-sdk-go v0.0.0-20230922233856-2dfdc0a08f43
 	github.com/google/go-cmp v0.5.9
 	google.golang.org/protobuf v1.31.0
 	k8s.io/apimachinery v0.28.2
