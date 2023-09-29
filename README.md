@@ -18,7 +18,7 @@ October.
 Keep in mind what is shown here is __far from the final developer experience__
 we want for Functions! This is the very first iteration - we have to start
 somewhere. We want your feedback - what do you want to see from the developer
-experience? Please [raise a Crossplane issue][crossplane-new-issue] with ideas.
+experience? Please [raise a Crossplane issue][new-crossplane-issue] with ideas.
 
 Here's an example of a Composition that uses a Composition Function.
 
