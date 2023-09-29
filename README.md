@@ -113,6 +113,10 @@ go run . --insecure --debug
 Once your Function is running, in another window you can use `xrender`.
 
 ```shell
+# Install xrender
+$ go install github.com/crossplane-contrib/xrender@latest
+
+# Run it! See the xrender repo for these examples.
 $ xrender examples/xr.yaml examples/composition.yaml examples/functions.yaml
 ---
 apiVersion: nopexample.org/v1
