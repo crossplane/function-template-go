@@ -155,9 +155,6 @@ Once you feel your Function is ready, use `docker build`, `docker tag`, and
 `docker push`to push it. Remember to use `docker-credential-up` (see above) if
 you want to push to `xpkg.upbound.io`!
 
-Again, keep in mind this is not the final experience! In particular we know the
-development loop to iterate on Functions (code, test, etc) must be smoother.
-
 ## Tips and Tricks for Writing Functions
 
 In no particular order, here's some things to keep in mind when writing a
