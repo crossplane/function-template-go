@@ -49,22 +49,26 @@ of `resources`.
 
 This template doesn't use the typical Crossplane build submodule and Makefile,
 since we'd like Functions to have a less heavyweight developer experience.
-It mostly relies on regular old Go tools:
+It uses heavily the multi-stage Dockerfile to perform all needed tasks,
+exposing them through a tiny Makefile wrapper. You even do not need to have
+go compiler installed.
 
 ```shell
 # Run code generation - see input/generate.go
-$ go generate ./...
+# build binary that gets placed _output folder in the project root
+$ make build
 
 # Run tests
-$ go test -cover ./...
-?       github.com/crossplane/function-template-go/input/v1beta1      [no test files]
-ok      github.com/crossplane/function-template-go    0.006s  coverage: 25.8% of statements
+$ make test
 
 # Lint the code
-$ docker run --rm -v $(pwd):/app -v ~/.cache/golangci-lint/v1.54.2:/root/.cache -w /app golangci/golangci-lint:v1.54.2 golangci-lint run
+$ make lint
 
 # Build a Docker image - see Dockerfile
-$ docker build .
+$ make image
+
+# you can build an image for a different arch
+$ make arm64.image
 ```
 
 This Function can be pushed to any Docker registry. To push to xpkg.upbound.io

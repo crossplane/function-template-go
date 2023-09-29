@@ -1,14 +1,53 @@
-FROM golang:1.21 as build-stage
+FROM --platform=${BUILDPLATFORM} golang:1.20.5-alpine AS base
 
-WORKDIR /fn
+WORKDIR /src
+ENV CGO_ENABLED=0
+COPY go.* .
+RUN --mount=type=cache,target=/go/pkg/mod \
+    go mod download
 
-COPY go.mod go.sum ./
-RUN go mod download
+FROM base AS build-stage
+ARG TARGETOS
+ARG TARGETARCH
+RUN --mount=readonly=false,target=. \
+    --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    GOOS=${TARGETOS} GOARCH=${TARGETARCH}  go run -tags generate sigs.k8s.io/controller-tools/cmd/controller-gen \
+    paths=./input/v1beta1 object crd:crdVersions=v1 output:artifacts:config=/out/package/input
 
-COPY input/ ./input
-COPY *.go ./
 
-RUN CGO_ENABLED=0 go build -o /function .
+RUN --mount=target=. \
+    --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    GOOS=${TARGETOS} GOARCH=${TARGETARCH}  go build -o /out/function .
+
+
+FROM base AS unit-test
+RUN --mount=target=. \
+    --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    go test -cover ./...
+
+FROM golangci/golangci-lint:v1.54.2 AS lint-base
+
+FROM base AS lint
+RUN --mount=target=. \
+    --mount=from=lint-base,src=/usr/bin/golangci-lint,target=/usr/bin/golangci-lint \
+    --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=cache,target=/root/.cache/golangci-lint \
+    golangci-lint run --timeout 10m0s ./...
+
+FROM scratch AS bin-unix
+COPY --from=build-stage /out/function /
+
+FROM bin-unix AS bin-linux
+FROM bin-unix AS bin-darwin
+
+FROM scratch AS bin-windows
+COPY --from=build-stage /out/function /function.exe
+
+FROM bin-${TARGETOS} as bin
 
 FROM debian:12.1-slim as package-stage
 
@@ -18,16 +57,17 @@ FROM debian:12.1-slim as package-stage
 # also happens to contain a valid Function runtime.
 # https://github.com/crossplane/crossplane/blob/v1.13.2/contributing/specifications/xpkg.md
 WORKDIR /package
-COPY package/ ./
+COPY --from=build-stage /out/package/ ./
+COPY package/crossplane.yaml ./
 
 RUN cat crossplane.yaml > /package.yaml
 RUN cat input/*.yaml >> /package.yaml
 
-FROM gcr.io/distroless/base-debian11 AS build-release-stage
+FROM gcr.io/distroless/base-debian11 AS img
 
 WORKDIR /
 
-COPY --from=build-stage /function /function
+COPY --from=bin /function /function
 COPY --from=package-stage /package.yaml /package.yaml
 
 EXPOSE 9443
