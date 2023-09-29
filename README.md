@@ -80,34 +80,80 @@ To turn this template into a working Function, the process is:
 1. Add your Function logic to `RunFunction` in `fn.go`
 1. Add tests for your Function logic in `fn_test.go`
 1. Update this file, `README.md`, to be about your Function!
-1. Use `docker build`, `docker tag`, and `docker push`to push your Function
 
-Then, to try your Function out:
+## Testing a Function
 
-1. [Install a master build of Crossplane][install-master-docs]
-1. Install your Function using the package manager
-1. Create a Composition in `mode: Pipeline` that references it
-1. Create a claim that uses your Composition
-1. See if it works - look for events associated with your XR, and logs from the
-   Function pod (it will usually be in `crossplane-system`)
+You can try your function out locally using [`xrender`][xrender]. With `xrender`
+you can run a Function pipeline on your laptop.
 
-You can see an example Composition near the beginning of this file. Before you
-can use your Composition you need to install the Function. You can do that by
-creating a manifest like this:
+First you'll need to create a `functions.yaml` file. This tells `xrender` what
+Functions to run, and how. In this case we want to run the Function you're
+developing in 'Development mode'. That pretty much means you'll run the Function
+manually and tell `xrender` where to find it.
 
 ```yaml
+---
 apiVersion: pkg.crossplane.io/v1beta1
 kind: Function
 metadata:
-  # Edit this to reflect the name of your Function.
-  name: function-example
-spec:
-  # Edit this to 
-  package: xpkg.upbound.io/crossplane-contrib:function-example:v0.1.0
+  name: function-test # Use your Function's name!
+  annotations:
+    # xrender will try to talk to your Function at localhost:9443
+    xrender.crossplane.io/runtime: Development
+    xrender.crossplane.io/runtime-development-target: localhost:9443
 ```
 
-Again, keep in mind this is not the final experience! In particular we know the
-development loop to iterate on Functions (code, test, etc) must be smoother.
+Next, run your Function locally:
+
+```shell
+# Run your Function in insecure mode
+go run . --insecure --debug
+```
+
+Once your Function is running, in another window you can use `xrender`.
+
+```shell
+# Install xrender
+$ go install github.com/crossplane-contrib/xrender@latest
+
+# Run it! See the xrender repo for these examples.
+$ xrender examples/xr.yaml examples/composition.yaml examples/functions.yaml
+---
+apiVersion: nopexample.org/v1
+kind: XBucket
+metadata:
+  name: test-xrender
+status:
+  bucketRegion: us-east-2
+---
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  annotations:
+    crossplane.io/composition-resource-name: my-bucket
+  generateName: test-xrender-
+  labels:
+    crossplane.io/composite: test-xrender
+  ownerReferences:
+  - apiVersion: nopexample.org/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: XBucket
+    name: test-xrender
+    uid: ""
+spec:
+  forProvider:
+    region: us-east-2
+```
+
+You can see an example Composition above. There's also some examples in the
+`xrender` repo's examples directory.
+
+## Pushing a Function
+
+Once you feel your Function is ready, use `docker build`, `docker tag`, and
+`docker push`to push it. Remember to use `docker-credential-up` (see above) if
+you want to push to `xpkg.upbound.io`!
 
 ## Tips and Tricks for Writing Functions
 
@@ -232,3 +278,4 @@ in JSON form.
 [install-master-docs]: https://docs.crossplane.io/v1.13/software/install/#install-pre-release-crossplane-versions
 [proto-schema]: https://github.com/crossplane/function-sdk-go/blob/main/proto/v1beta1/run_function.proto
 [grpcurl]: https://github.com/fullstorydev/grpcurl
+[xrender]: https://github.com/crossplane-contrib/xrender
