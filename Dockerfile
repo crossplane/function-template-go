@@ -10,7 +10,7 @@ COPY *.go ./
 
 RUN CGO_ENABLED=0 go build -o /function .
 
-FROM debian:12.1-slim as package-stage
+FROM debian:12.2-slim as package-stage
 
 # TODO(negz): Use a proper Crossplane package building tool. We're abusing the
 # fact that this image won't have an io.crossplane.pkg: base annotation. This
