@@ -8,7 +8,7 @@ require (
 	github.com/crossplane/function-sdk-go v0.0.0-20230930011419-ec31b88ab696
 	github.com/google/go-cmp v0.5.9
 	google.golang.org/protobuf v1.31.0
-	k8s.io/apimachinery v0.28.2
+	k8s.io/apimachinery v0.28.3
 	sigs.k8s.io/controller-tools v0.13.0
 )
 
@@ -47,11 +47,11 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.26.0 // indirect
 	golang.org/x/mod v0.12.0 // indirect
-	golang.org/x/net v0.14.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
 	golang.org/x/oauth2 v0.10.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
-	golang.org/x/term v0.11.0 // indirect
-	golang.org/x/text v0.12.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
+	golang.org/x/term v0.13.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/tools v0.12.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
