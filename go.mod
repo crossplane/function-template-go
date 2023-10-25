@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/alecthomas/kong v0.8.0
-	github.com/crossplane/crossplane-runtime v1.14.0-rc.0.0.20231019152856-a5df125af6f8
+	github.com/crossplane/crossplane-runtime v1.14.0-rc.1
 	github.com/crossplane/function-sdk-go v0.0.0-20231024211620-66fe852bf9fc
 	github.com/google/go-cmp v0.6.0
 	google.golang.org/protobuf v1.31.0
