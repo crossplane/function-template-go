@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/alecthomas/kong v0.8.1
 	github.com/crossplane/crossplane-runtime v1.14.0-rc.1
-	github.com/crossplane/function-sdk-go v0.0.0-20231024211620-66fe852bf9fc
+	github.com/crossplane/function-sdk-go v0.0.0-20231025230156-142a5c0bc9cc
 	github.com/google/go-cmp v0.6.0
 	google.golang.org/protobuf v1.31.0
 	k8s.io/apimachinery v0.28.3
@@ -69,5 +69,5 @@ require (
 	sigs.k8s.io/controller-runtime v0.16.3 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
-	sigs.k8s.io/yaml v1.3.0 // indirect
+	sigs.k8s.io/yaml v1.4.0 // indirect
 )
