@@ -83,13 +83,13 @@ To turn this template into a working Function, the process is:
 
 ## Testing a Function
 
-You can try your function out locally using [`xrender`][xrender]. With `xrender`
+You can try your function out locally using Crossplane CLI's [`render`] command. With `render`
 you can run a Function pipeline on your laptop.
 
-First you'll need to create a `functions.yaml` file. This tells `xrender` what
+First you'll need to create a `functions.yaml` file. This tells `render` what
 Functions to run, and how. In this case we want to run the Function you're
 developing in 'Development mode'. That pretty much means you'll run the Function
-manually and tell `xrender` where to find it.
+manually and tell `render` where to find it.
 
 ```yaml
 ---
@@ -98,9 +98,9 @@ kind: Function
 metadata:
   name: function-test # Use your Function's name!
   annotations:
-    # xrender will try to talk to your Function at localhost:9443
-    xrender.crossplane.io/runtime: Development
-    xrender.crossplane.io/runtime-development-target: localhost:9443
+    # render will try to talk to your Function at localhost:9443
+    render.crossplane.io/runtime: Development
+    render.crossplane.io/runtime-development-target: localhost:9443
 ```
 
 Next, run your Function locally:
@@ -110,14 +110,14 @@ Next, run your Function locally:
 go run . --insecure --debug
 ```
 
-Once your Function is running, in another window you can use `xrender`.
+Once your Function is running, in another window you can use the `render` command.
 
 ```shell
-# Install xrender
-$ go install github.com/crossplane-contrib/xrender@latest
+# Install Crossplane CLI
+$ curl -sL https://raw.githubusercontent.com/crossplane/crossplane/master/install.sh | XP_CHANNEL=stable sh
 
-# Run it! See the xrender repo for these examples.
-$ xrender examples/xr.yaml examples/composition.yaml examples/functions.yaml
+# Run it!
+$ crossplane beta render examples/xr.yaml examples/composition.yaml examples/functions.yaml
 ---
 apiVersion: nopexample.org/v1
 kind: XBucket
@@ -146,8 +146,7 @@ spec:
     region: us-east-2
 ```
 
-You can see an example Composition above. There's also some examples in the
-`xrender` repo's examples directory.
+You can see an example Composition above.
 
 ## Pushing a Function
 
@@ -278,4 +277,3 @@ in JSON form.
 [install-master-docs]: https://docs.crossplane.io/v1.13/software/install/#install-pre-release-crossplane-versions
 [proto-schema]: https://github.com/crossplane/function-sdk-go/blob/main/proto/v1beta1/run_function.proto
 [grpcurl]: https://github.com/fullstorydev/grpcurl
-[xrender]: https://github.com/crossplane-contrib/xrender
