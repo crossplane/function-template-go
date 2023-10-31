@@ -79,6 +79,8 @@ github.com/crossplane/function-sdk-go v0.0.0-20231030184106-7a3f487b6483 h1:dwXw
 github.com/crossplane/function-sdk-go v0.0.0-20231030184106-7a3f487b6483/go.mod h1:WX2L2pWKKhYgw/yEY6JD0HmUPFqOGNmjd1uX+6I/hoE=
 github.com/crossplane/function-sdk-go v0.0.0-20231031064053-81ac1ac9991a h1:DUYyPChby57DOTcp6xiDeMklfH/ByDbIrozeK2NIQzU=
 github.com/crossplane/function-sdk-go v0.0.0-20231031064053-81ac1ac9991a/go.mod h1:FMJhnAJJbokJbSd2LIiRosGFtcuvS/1iF1nTPPWL+IU=
+github.com/crossplane/function-sdk-go v0.0.0-20231031184832-8835a3eba04d h1:BMTcCUmwaVXjc9sG5J9uWXu8hJW9TRhXQsvLXtcmSF0=
+github.com/crossplane/function-sdk-go v0.0.0-20231031184832-8835a3eba04d/go.mod h1:AvJq+E7NouikO0FvIHm7BKlaHEydq9HmSPVr23Ld0/M=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -105,6 +107,8 @@ github.com/go-json-experiment/json v0.0.0-20231013223334-54c864be5b8d/go.mod h1:
 github.com/go-logr/logr v1.2.0/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
 github.com/go-logr/logr v1.2.4 h1:g01GSCwiDw2xSZfjJ2/T9M+S6pFdcNtFYsp+Y43HYDQ=
 github.com/go-logr/logr v1.2.4/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
+github.com/go-logr/logr v1.3.0 h1:2y3SDp0ZXuc6/cjLSZ+Q3ir+QB9T/iG5yYRXqsagWSY=
+github.com/go-logr/logr v1.3.0/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-logr/zapr v1.2.4 h1:QHVo+6stLbfJmYGkQ7uGHUCu5hnAFAj6mDe6Ea0SeOo=
 github.com/go-logr/zapr v1.2.4/go.mod h1:FyHWQIzQORZ0QVE1BtVHv3cKtNLuXsbNLtpuhNapBOA=
 github.com/go-openapi/jsonpointer v0.19.6 h1:eCs3fxoIi3Wh6vtgmLTOjdhSpiqphQ+DaPn38N2ZdrE=
