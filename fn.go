@@ -22,19 +22,10 @@ type Function struct {
 
 // RunFunction runs the Function.
 func (f *Function) RunFunction(_ context.Context, req *fnv1beta1.RunFunctionRequest) (*fnv1beta1.RunFunctionResponse, error) {
-	f.log.Info("Running Function", "tag", req.GetMeta().GetTag())
+	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
 
-	// This creates a new response to the supplied request. Note that Functions
-	// are run in a pipeline! Other Functions may have run before this one. If
-	// they did, response.To will copy their desired state from req to rsp. Be
-	// sure to pass through any desired state your Function is not concerned
-	// with unmodified.
 	rsp := response.To(req, response.DefaultTTL)
 
-	// Input is supplied by the author of a Composition when they choose to run
-	// your Function. Input is arbitrary, except that it must be a KRM-like
-	// object. Supporting input is also optional - if you don't need to you can
-	// delete this, and delete the input directory.
 	in := &v1beta1.Input{}
 	if err := request.GetInput(req, in); err != nil {
 		response.Fatal(rsp, errors.Wrapf(err, "cannot get Function input from %T", req))
@@ -42,12 +33,8 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1beta1.RunFunctionRequ
 	}
 
 	// TODO: Add your Function logic here!
-	//
-	// Take a look at function-sdk-go for some utilities for working with req
-	// and rsp - https://pkg.go.dev/github.com/crossplane/function-sdk-go
-	//
-	// Also, be sure to look at the tips in README.md
-	response.Normalf(rsp, "I was run with input %q", in.Example)
+	response.Normalf(rsp, "I was run with input %q!", in.Example)
+	f.log.Info("I was run!", "input", in.Example)
 
 	return rsp, nil
 }

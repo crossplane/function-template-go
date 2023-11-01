@@ -38,9 +38,9 @@ func TestRunFunction(t *testing.T) {
 				req: &fnv1beta1.RunFunctionRequest{
 					Meta: &fnv1beta1.RequestMeta{Tag: "hello"},
 					Input: resource.MustStructJSON(`{
-						"apiVersion": "dummy.fn.crossplane.io",
+						"apiVersion": "template.fn.crossplane.io/v1beta1",
 						"kind": "Input",
-						"example": "Hello, world!"
+						"example": "Hello, world"
 					}`),
 				},
 			},
@@ -50,7 +50,7 @@ func TestRunFunction(t *testing.T) {
 					Results: []*fnv1beta1.Result{
 						{
 							Severity: fnv1beta1.Severity_SEVERITY_NORMAL,
-							Message:  "I was run with input \"Hello, world!\"",
+							Message:  "I was run with input \"Hello, world\"!",
 						},
 					},
 				},
