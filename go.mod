@@ -10,7 +10,7 @@ require (
 	github.com/crossplane/function-sdk-go v0.1.0
 	github.com/google/go-cmp v0.6.0
 	google.golang.org/protobuf v1.31.0
-	k8s.io/apimachinery v0.28.3
+	k8s.io/apimachinery v0.28.4
 	sigs.k8s.io/controller-tools v0.13.0
 )
 
