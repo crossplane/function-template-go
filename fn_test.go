@@ -50,6 +50,15 @@ func TestRunFunction(t *testing.T) {
 						{
 							Severity: fnv1beta1.Severity_SEVERITY_NORMAL,
 							Message:  "I was run with input \"Hello, world\"!",
+							Target:   fnv1beta1.Target_TARGET_COMPOSITE.Enum(),
+						},
+					},
+					Conditions: []*fnv1beta1.Condition{
+						{
+							Type:   "FunctionSuccess",
+							Status: fnv1beta1.Status_STATUS_CONDITION_TRUE,
+							Reason: "Success",
+							Target: fnv1beta1.Target_TARGET_COMPOSITE_AND_CLAIM.Enum(),
 						},
 					},
 				},
