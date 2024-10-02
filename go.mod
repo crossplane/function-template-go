@@ -2,7 +2,7 @@ module github.com/crossplane/function-template-go
 
 go 1.23
 
-toolchain go1.23.1
+toolchain go1.23.2
 
 require (
 	github.com/alecthomas/kong v0.9.0
