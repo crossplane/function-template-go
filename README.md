@@ -14,7 +14,7 @@ If you just want to jump in and get started:
 1. Replace `function-template-go` with your function in `go.mod`,
    `package/crossplane.yaml`, and any Go imports. (You can also do this
    automatically by running the `./init.sh <function-name>` script.)
-1. Update `input/v1beta1/` to reflect your desired input (and run `go generate`)
+1. Update `input/v1beta1/` to reflect your desired input (and run `go generate ./...`)
 1. Add your logic to `RunFunction` in `fn.go`
 1. Add tests for your logic in `fn_test.go`
 1. Update this file, `README.md`, to be about your function!
