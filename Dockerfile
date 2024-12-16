@@ -13,6 +13,8 @@ FROM --platform=${BUILDPLATFORM} golang:${GO_VERSION} AS build
 WORKDIR /fn
 
 # Most functions don't want or need CGo support, so we disable it.
+# If CGo support is needed make sure to also change the base image to one that
+# includes glibc, like 'distroless/base'.
 ENV CGO_ENABLED=0
 
 # We run go mod download in a separate step so that we can cache its results.
@@ -38,7 +40,7 @@ RUN --mount=target=. \
 
 # Produce the Function image. We use a very lightweight 'distroless' image that
 # does not include any of the build tools used in previous stages.
-FROM gcr.io/distroless/base-debian11 AS image
+FROM gcr.io/distroless/static-debian12:nonroot AS image
 WORKDIR /
 COPY --from=build /function /function
 EXPOSE 9443
