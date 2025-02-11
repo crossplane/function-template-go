@@ -6,7 +6,7 @@ toolchain go1.23.2
 
 require (
 	github.com/alecthomas/kong v0.9.0
-	github.com/crossplane/crossplane-runtime v1.18.0
+	github.com/crossplane/crossplane-runtime v1.19.0
 	github.com/crossplane/function-sdk-go v0.4.0
 	github.com/google/go-cmp v0.6.0
 	google.golang.org/protobuf v1.34.3-0.20240816073751-94ecbc261689
@@ -50,7 +50,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
-	golang.org/x/net v0.29.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.22.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
