@@ -16,7 +16,7 @@ env:
   # Common versions
   GO_VERSION: '1.23.1'
   GOLANGCI_VERSION: 'v1.61.0'
-  DOCKER_BUILDX_VERSION: 'v0.11.2'
+  DOCKER_BUILDX_VERSION: 'v0.24.0'
 
   # These environment variables are important to the Crossplane CLI install.sh
   # script. They determine what version it installs.
@@ -140,6 +140,8 @@ jobs:
       - name: Download Single-Platform Packages
         uses: actions/download-artifact@v4
         with:
+          # See https://github.com/docker/build-push-action/blob/263435/README.md#summaries
+          pattern: "!*.dockerbuild"
           path: .
           merge-multiple: true
 
