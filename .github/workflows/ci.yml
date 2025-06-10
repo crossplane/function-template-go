@@ -14,8 +14,8 @@ on:
 
 env:
   # Common versions
-  GO_VERSION: '1.23.1'
-  GOLANGCI_VERSION: 'v1.61.0'
+  GO_VERSION: '1.24.3'
+  GOLANGCI_VERSION: 'v2.1.6'
   DOCKER_BUILDX_VERSION: 'v0.24.0'
 
   # These environment variables are important to the Crossplane CLI install.sh
@@ -49,7 +49,7 @@ jobs:
         run: go mod tidy && git diff --exit-code go.mod go.sum
 
       - name: Lint
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v7
         with:
           version: ${{ env.GOLANGCI_VERSION }}
 
