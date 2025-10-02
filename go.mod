@@ -7,8 +7,8 @@ toolchain go1.23.2
 require (
 	github.com/alecthomas/kong v0.9.0
 	github.com/crossplane/function-sdk-go v0.4.0
-	github.com/google/go-cmp v0.6.0
-	google.golang.org/protobuf v1.34.3-0.20240816073751-94ecbc261689
+	github.com/google/go-cmp v0.7.0
+	google.golang.org/protobuf v1.36.10
 	k8s.io/apimachinery v0.31.0
 	sigs.k8s.io/controller-tools v0.16.0
 )
