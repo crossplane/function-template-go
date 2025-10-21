@@ -18,11 +18,6 @@ env:
   GOLANGCI_VERSION: 'v2.4.0'
   DOCKER_BUILDX_VERSION: 'v0.24.0'
 
-  # These environment variables are important to the Crossplane CLI install.sh
-  # script. They determine what version it installs.
-  XP_CHANNEL: stable
-  XP_VERSION: v1.20.0
-
   # The package to push, without a version tag. The default matches GitHub. For
   # example xpkg.crossplane.io/crossplane/function-template-go. Note that
   # xpkg.crossplane.io is just an alias for ghcr.io, so we upload to ghcr.io but
