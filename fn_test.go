@@ -16,7 +16,6 @@ import (
 )
 
 func TestRunFunction(t *testing.T) {
-
 	type args struct {
 		ctx context.Context
 		req *fnv1.RunFunctionRequest
