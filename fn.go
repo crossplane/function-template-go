@@ -8,6 +8,7 @@ import (
 	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/response"
+
 	"github.com/crossplane/function-template-go/input/v1beta1"
 )
 
