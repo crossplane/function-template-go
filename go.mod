@@ -3,7 +3,7 @@ module github.com/crossplane/function-template-go
 go 1.24.9
 
 require (
-	github.com/alecthomas/kong v0.9.0
+	github.com/alecthomas/kong v1.13.0
 	github.com/crossplane/function-sdk-go v0.5.0
 	github.com/google/go-cmp v0.7.0
 	google.golang.org/protobuf v1.36.10
