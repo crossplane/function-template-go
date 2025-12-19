@@ -8,7 +8,7 @@ require (
 	github.com/google/go-cmp v0.7.0
 	google.golang.org/protobuf v1.36.11
 	k8s.io/apimachinery v0.34.3
-	sigs.k8s.io/controller-tools v0.19.0
+	sigs.k8s.io/controller-tools v0.20.0
 )
 
 require (
