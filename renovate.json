@@ -4,7 +4,9 @@
     "config:recommended"
   ],
   "crossplane": {
-    "fileMatch": ["(^|/)example/.*\\.ya?ml$"]
+    "managerFilePatterns": [
+      "/(^|/)example/.*\\.ya?ml$/"
+    ]
   },
   "packageRules": [
     {
