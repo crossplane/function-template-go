@@ -9,27 +9,17 @@ import (
 
 // CLI of this Function.
 type CLI struct {
-	Debug bool `env:"DEBUG" help:"Emit debug logs in addition to info logs." short:"d"`
-
-	Network            string `default:"tcp"              env:"NETWORK"                                                                                                      help:"Network on which to listen for gRPC connections."`
-	Address            string `default:":9443"            env:"ADDRESS"                                                                                                      help:"Address at which to listen for gRPC connections."`
-	TLSCertsDir        string `env:"TLS_SERVER_CERTS_DIR" help:"Directory containing server certs (tls.key, tls.crt) and the CA used to verify client certificates (ca.crt)"`
-	Insecure           bool   `env:"INSECURE"             help:"Run without mTLS credentials. If you supply this flag --tls-server-certs-dir will be ignored."`
-	MaxRecvMessageSize int    `default:"4"                env:"MAX_RECV_MESSAGE_SIZE"                                                                                        help:"Maximum size of received messages in MB"`
+	function.CLI `kong:"embed"`
 }
 
 // Run this Function.
 func (c *CLI) Run() error {
-	log, err := function.NewLogger(c.Debug)
+	log, err := c.Logger()
 	if err != nil {
 		return err
 	}
 
-	return function.Serve(&Function{log: log},
-		function.Listen(c.Network, c.Address),
-		function.MTLSCertificates(c.TLSCertsDir),
-		function.Insecure(c.Insecure),
-		function.MaxRecvMessageSize(c.MaxRecvMessageSize*1024*1024))
+	return function.Serve(&Function{log: log}, c.StandardOptions()...)
 }
 
 func main() {
