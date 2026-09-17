@@ -3,7 +3,6 @@ module github.com/crossplane/function-template-go
 go 1.27.0
 
 require (
-	github.com/alecthomas/kong v1.16.1
 	github.com/crossplane/function-sdk-go v0.7.1 // TODO, requires https://github.com/crossplane/function-sdk-go/pull/366
 	github.com/google/go-cmp v0.7.0
 	google.golang.org/protobuf v1.36.12
@@ -13,6 +12,7 @@ require (
 
 require (
 	dario.cat/mergo v1.0.2 // indirect
+	github.com/alecthomas/kong v1.16.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/crossplane/crossplane-runtime/v2 v2.4.0 // indirect

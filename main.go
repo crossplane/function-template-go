@@ -2,8 +2,6 @@
 package main
 
 import (
-	"github.com/alecthomas/kong"
-
 	"github.com/crossplane/function-sdk-go"
 )
 
@@ -23,6 +21,5 @@ func (c *CLI) Run() error {
 }
 
 func main() {
-	ctx := kong.Parse(&CLI{}, kong.Description("A Crossplane Composition Function."))
-	ctx.FatalIfErrorf(ctx.Run())
+	function.Parse(&CLI{}, "A Crossplane Composition Function.")
 }
