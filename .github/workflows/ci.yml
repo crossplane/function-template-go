@@ -14,8 +14,8 @@ on:
 
 env:
   # Common versions
-  GO_VERSION: '1.25.10'
-  GOLANGCI_VERSION: 'v2.4.0'
+  GO_VERSION: '1.26.0'
+  GOLANGCI_VERSION: 'v2.12.0'
   DOCKER_BUILDX_VERSION: 'v0.24.0'
 
   # The package to push, without a version tag. The default matches GitHub. For
